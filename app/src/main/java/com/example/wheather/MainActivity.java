@@ -90,9 +90,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void calculateTemp(View view){
-        season = city.getSeasonHashMap().get(seasonSpinner.getSelectedItem().toString());
-        temperature.setText(
-                String.format("%.1f", (season.getMonthList().stream().map(x->x.getTemperature()).reduce((x, y)-> x+y)).get()/3f));
+        try {
+            season = city.getSeasonHashMap().get(seasonSpinner.getSelectedItem().toString());
+            temperature.setText(
+                    String.format("%.1f", (season.getMonthList().stream().map(x -> x.getTemperature()).reduce((x, y) -> x + y)).get() / 3f));
+        }
+        catch (Exception ex){
+
+        }
 
     }
 
